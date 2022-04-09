@@ -2,7 +2,9 @@ export type Input = string;
 
 export type Letter = string;
 
-export type Alphabet = Letter[];
+export type Alphabet = Set<Letter>;
+
+export type A = Set<string>;
 
 export type State = string;
 

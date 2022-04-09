@@ -2,7 +2,7 @@ import { describe, expect } from '@jest/globals';
 import { InputOutput } from '../src/test-utils';
 import { dfaNextState } from '../src/dfa';
 import { NextStateTable, Machine } from '../src/typings';
-import runMachine from '../src/run-machine';
+import initMachine from '../src/init-machine';
 
 const nextStateTable: NextStateTable = new Map()
   .set('q1', { '0': ['q1'], '1': ['q2'] })
@@ -11,7 +11,7 @@ const nextStateTable: NextStateTable = new Map()
 
 const m1: Machine = {
   acceptStates: ['q3'],
-  alphabet: ['0', '1'],
+  alphabet: new Set('01'),
   startState: 'q1',
   states: nextStateTable,
   transitionFunction: dfaNextState,
@@ -27,7 +27,8 @@ describe('Parses reject/accept', () => {
     ['1001010', false],
   ];
   for (const [input, output] of sequences) {
+    const runMachine = initMachine(m1);
     test(`${input} is ${output ? 'accepted' : 'rejected'}`, () =>
-      expect(runMachine(input, m1)).toEqual(output));
+      expect(runMachine(input)).toEqual(output));
   }
 });

@@ -1,7 +1,7 @@
 import { Reject, Accept, Alphabet, State, Input } from './typings';
 
 export function isValidInput(s: Input, alphabet: Alphabet) {
-  return !s.length || new RegExp(`^[${alphabet.join('')}]+$`, 'g').test(s);
+  return Array.from(s).every((l: string) => alphabet.has(l));
 }
 
 function isValidEndState(acceptingStates: State[]) {
