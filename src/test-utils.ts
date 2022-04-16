@@ -3,3 +3,5 @@ export function isAcceptPattern(input: string) {
 }
 
 export type InputOutput = [string, boolean];
+
+export type InputOutputFst = [string, string];

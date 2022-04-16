@@ -34,3 +34,7 @@ export type GNFAState = {
   s: State;
   i: Input;
 };
+
+export type Transition = Record<string, [string, string]>;
+
+export type FST = Map<string, Transition>;
