@@ -12,7 +12,9 @@ export default function initMachine({
     if (!isValidInput(input, alphabet)) {
       throw new Error('Invalid character(s). Not part of language alphabet.');
     }
-
+    if (!transitionFunction) {
+      throw new Error('No transitionFunction');
+    }
     return isAccept(...acceptStates)(
       Array.from(input).reduce(transitionFunction(states), [startState])
     );

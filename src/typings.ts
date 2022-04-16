@@ -19,7 +19,7 @@ export type TransitionFunction = (
 export type Machine = {
   states: NextStateTable;
   alphabet: Alphabet;
-  transitionFunction: TransitionFunction;
+  transitionFunction?: TransitionFunction;
   startState: State;
   acceptStates: State[];
 };
@@ -27,3 +27,10 @@ export type Machine = {
 export type Reject = false;
 
 export type Accept = true;
+
+export type GNFATempState = { t: RegExp; r: State };
+
+export type GNFAState = {
+  s: State;
+  i: Input;
+};
