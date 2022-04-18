@@ -1,6 +1,6 @@
-import { FST } from './typings';
+import { FSTMachine } from './typings';
 
-export default function (m: FST) {
+export default function ({ m, startState }: FSTMachine) {
   return function (inputStream: string) {
     const [output] = Array.from(inputStream).reduce(
       (
@@ -10,7 +10,7 @@ export default function (m: FST) {
         const [stateOutputs, nextState] = m.get(state)![input];
         return [accOutput + stateOutputs, nextState];
       },
-      ['', 'q1']
+      ['', startState]
     );
     return output;
   };

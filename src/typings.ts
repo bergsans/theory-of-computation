@@ -38,3 +38,8 @@ export type GNFAState = {
 export type Transition = Record<string, [string, string]>;
 
 export type FST = Map<string, Transition>;
+
+export type FSTMachine = {
+  m: FST;
+  startState: Letter;
+};

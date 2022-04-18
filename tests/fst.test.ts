@@ -4,7 +4,7 @@ import initFst from '../src/fst';
 import { FST } from '../src/typings';
 
 describe('Parses reject/accept', () => {
-  const m1: FST = new Map()
+  const m1NextStateTable: FST = new Map()
     .set('q1', {
       '0': ['0', 'q1'],
       '1': ['0', 'q1'],
@@ -15,6 +15,10 @@ describe('Parses reject/accept', () => {
       '1': ['1', 'q1'],
       '2': ['1', 'q2'],
     });
+  const m1 = {
+    startState: 'q1',
+    m: m1NextStateTable,
+  };
   const sequences: InputOutputFst[] = [['2212011', '1111000']];
   for (const [input, output] of sequences) {
     const runMachine = initFst(m1);
