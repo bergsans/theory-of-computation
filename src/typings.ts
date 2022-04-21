@@ -1,3 +1,5 @@
+import { Stack } from '../src/pda';
+
 export type Input = string;
 
 export type Letter = string;
@@ -35,11 +37,25 @@ export type GNFAState = {
   i: Input;
 };
 
-export type Transition = Record<string, [string, string]>;
+export type FSTTransition = Record<string, [string, string]>;
 
-export type FST = Map<string, Transition>;
+export type FST = Map<string, FSTTransition>;
 
 export type FSTMachine = {
   m: FST;
   startState: Letter;
+};
+
+export type NPDAState = Map<
+  string,
+  Record<string, { nextState: string; cmd: [string, string] }>
+>;
+
+export type NPDA = {
+  states: NPDAState;
+  alphabet: Alphabet;
+  stack: Stack;
+  transitionFunction?: undefined;
+  startState: State;
+  acceptStates: State[];
 };
