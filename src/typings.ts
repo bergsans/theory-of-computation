@@ -59,3 +59,10 @@ export type NPDA = {
   startState: State;
   acceptStates: State[];
 };
+
+export type CFG = {
+  //V: Set<string>;
+  //E: Set<string>;
+  //S: string;
+  productionsRules: string;
+};
