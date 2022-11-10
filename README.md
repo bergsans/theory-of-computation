@@ -1,4 +1,4 @@
-# theory-of-computation
+# Theory of Computation
 
 Solving problems from Theory of computation
 
